@@ -1,0 +1,29 @@
+{
+  "name": "homebridge-rtc-temperature",
+  "version": "0.0.1",
+  "description": "Homebridge module to read RTC temperature sensor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arkku/homebridge-rtc-temperature.git"
+  },
+  "dependencies": {},
+  "keywords": [
+    "homebridge",
+    "homebridge-plugin",
+    "temperature"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.4.46"
+  },
+  "author": "arkku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arkku/homebridge-rtc-temperature/issues"
+  },
+  "homepage": "https://github.com/arkku/homebridge-rtc-temperature.git"
+}
