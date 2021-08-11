@@ -39,7 +39,7 @@ function RTCTemperature(log, config, api) {
         this.divisor = 1000;
     }
 
-    this.log.debug("RTCTemperature: " + this.name + ": " + this.sourceFile);
+    this.log("RTCTemperature: " + this.name + ": " + this.sourceFile);
 }
 
 RTCTemperature.prototype = {
@@ -63,14 +63,18 @@ RTCTemperature.prototype = {
 
         function readTemperature() {
             const rawValue = fs.readFileSync(that.sourceFile, "utf-8");
-			const temperature = parseFloat(rawValue) / that.divisor;
-			that.log.debug(that.sourceFile + ": " + rawValue + " / " + that.divisor + " = " + temperature + "°C");
+            const temperature = parseFloat(rawValue) / that.divisor;
+            that.log.debug(that.sourceFile + ": " + rawValue + " / " + that.divisor + " = " + temperature + "°C");
             return temperature;
         }
+
+        const initialTemperature = readTemperature();
+        this.log(this.name + ": " + initialTemperature + "°C");
+
         temperatureCharacteristic.updateValue(readTemperature());
-		setInterval(() => {
-			temperatureCharacteristic.updateValue(readTemperature());
-		}, that.updateInterval);
+        setInterval(() => {
+            temperatureCharacteristic.updateValue(readTemperature());
+        }, that.updateInterval);
         temperatureCharacteristic.on('get', (callback) => {
             callback(null, readTemperature());
         });
